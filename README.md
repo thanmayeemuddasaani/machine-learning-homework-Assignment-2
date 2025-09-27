@@ -24,13 +24,15 @@ Split: 70/30 stratified train/test, random_state=42. All 4 features used.
 
 We trained kNN with k ∈ {1,3,5,10} on the two-feature subset. Decision-boundary visualizations on the train split:
 
-![decision_boundary_k1.png](./decision_boundary_k1.png)
+<img width="630" height="470" alt="image" src="https://github.com/user-attachments/assets/76008ab5-0297-4fac-9425-61a8d8334cb8" />
 
-![decision_boundary_k3.png](./decision_boundary_k3.png)
 
-![decision_boundary_k5.png](./decision_boundary_k5.png)
+<img width="630" height="470" alt="image" src="https://github.com/user-attachments/assets/b3054f8a-aa10-4635-bb59-5a7172c86a10" />
 
-![decision_boundary_k10.png](./decision_boundary_k10.png)
+<img width="630" height="470" alt="image" src="https://github.com/user-attachments/assets/536abfbd-223b-45d3-a28d-818e13186880" />
+
+<img width="630" height="470" alt="image" src="https://github.com/user-attachments/assets/8985a382-809b-49cf-be94-738564fac79d" />
+
 
 |   k |   train_acc |   test_acc |
 |----:|------------:|-----------:|
@@ -70,7 +72,9 @@ weighted avg     0.9792    0.9778    0.9778        45
 
 **Micro-average ROC AUC:** `0.9968`
 
-![Confusion Matrix](./knn_k5_confusion_matrix.png)
+<img width="577" height="470" alt="image" src="https://github.com/user-attachments/assets/8cbefa99-b530-4960-9e57-3a12f674bda4" />
 
-![ROC Curve](./knn_k5_roc.png)
+
+<img width="630" height="470" alt="image" src="https://github.com/user-attachments/assets/9c5c24a1-0d9a-4d4a-9fc1-a937f3d505c4" />
+
 
