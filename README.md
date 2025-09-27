@@ -41,10 +41,45 @@ We trained kNN with k ∈ {1,3,5,10} on the two-feature subset. Decision-boundar
 |   5 |    0.847619 |   0.8      |
 |  10 |    0.809524 |   0.755556 |
 
-**Boundary Evolution:**
-- **k=1**: very wiggly, highly local boundaries (risk of overfitting).
-- **k=3–5**: smoother boundaries, better generalization.
-- **k=10**: boundaries become smoother but can underfit class edges.
+## 🔹 Results & Analysis
+
+### k = 1
+- The decision boundary is very irregular and jagged.  
+- Each training point strongly influences its local region.  
+- This indicates **high variance** and a tendency to **overfit**.  
+- The model is very sensitive to noise.
+
+---
+
+### k = 3
+- The boundary is smoother compared to k=1.  
+- Predictions are based on 3 neighbors, so local noise has less effect.  
+- Some irregular shapes remain, but the model is **more stable**.  
+
+---
+
+### k = 5
+- The boundaries are smoother and more generalized.  
+- Noise influence is further reduced.  
+- This achieves a **good balance between bias and variance**.  
+- The model generalizes well compared to smaller k.
+
+---
+
+### k = 10
+- The boundaries are the smoothest of all cases.  
+- Predictions are very stable because the model considers a larger neighborhood.  
+- However, some fine details are lost, leading to **higher bias**.  
+- This may cause **underfitting** if k is set too high.
+
+---
+
+## 🔹 Overall Observation
+- **Small k (1, 3):** High variance, low bias → prone to overfitting.  
+- **Medium k (5):** Best trade-off between bias and variance → good generalization.  
+- **Large k (10):** Low variance, high bias → may underfit.  
+
+➡️ Based on the plots, **k=5** gives the most balanced and reliable decision boundaries for this dataset.
 
 ## Q9. Performance Evaluation for kNN (k=5, 4 features)
 
@@ -74,7 +109,40 @@ weighted avg     0.9792    0.9778    0.9778        45
 
 <img width="577" height="470" alt="image" src="https://github.com/user-attachments/assets/8cbefa99-b530-4960-9e57-3a12f674bda4" />
 
+## 🔹 Confusion Matrix
 
+| True Class   | Predicted Setosa | Predicted Versicolor | Predicted Virginica |
+|--------------|------------------|-----------------------|----------------------|
+| **Setosa**      | 15               | 0                     | 0                    |
+| **Versicolor**  | 0                | 15                    | 0                    |
+| **Virginica**   | 0                | 1                     | 14                   |
+
+**Observations:**
+- The model classified **Setosa** and **Versicolor** perfectly.  
+- For **Virginica**, 1 sample was misclassified as Versicolor.  
+- Overall, the misclassification rate is very low.
+
+---
+
+## 🔹 Classification Report
+
+- **Setosa** → Precision: 1.00, Recall: 1.00, F1: 1.00  
+- **Versicolor** → Precision: 0.94, Recall: 1.00, F1: 0.97  
+- **Virginica** → Precision: 1.00, Recall: 0.93, F1: 0.97  
+
+**Overall performance:**
+- **Accuracy:** 97.8%  
+- **Macro avg (across classes):** Precision = 0.979, Recall = 0.978, F1 = 0.978  
+- The model performs consistently well across all three classes.
 <img width="630" height="470" alt="image" src="https://github.com/user-attachments/assets/9c5c24a1-0d9a-4d4a-9fc1-a937f3d505c4" />
 
+## 🔹 ROC Curve & AUC
 
+- I plotted the **micro-average ROC curve** for the multiclass setting.  
+- The **AUC (Area Under Curve) ≈ 0.997**, which indicates **excellent separability** between classes.  
+- The curve lies close to the top-left corner, showing high true positive rate with very low false positives.
+
+  ## 🔹 Conclusion
+- The **kNN classifier with k=5** achieves **very high accuracy and strong generalization** on the Iris dataset.  
+- Only a single misclassification occurred, showing that this choice of k is effective.  
+- Based on the confusion matrix, precision, recall, and AUC, the model is reliable and balanced across all three Iris classes.
